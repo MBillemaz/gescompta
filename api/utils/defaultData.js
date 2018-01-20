@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const AddressModel = mongoose.model('Address');
 const UserModel = mongoose.model('User');
-
+const ProduitModel = mongoose.model("Produit");
 var myAddress = null;
 
 const loadAddress = (addressType) => {
@@ -35,4 +35,27 @@ const loadUser = () => {
   );
 }
 
+const loadProduit = () => {
+  ProduitModel.findOneOrCreate({
+    identifiant: "ABC",
+       name: "Ordinateur portable",
+       price_TTC: 350,
+       price_HT: 350 / 1.2,
+       descriptif: {
+        capacity: 20,
+        frequency: 3.30,
+        autonomy: 3.5,
+        compatibility: true
+       },
+       infos: {
+        guarantee: 2,
+        mail: "retour@mail.com",
+        address: "3 avenue de paris"
+       }
+  }, (err, result) => {
+    if (err) {throw err;}
+  });
+}
+
 loadAddress();
+loadProduit();

@@ -6,7 +6,8 @@ var express = require('express')
 app = express();
 var bodyParser = require('body-parser');
 // parse application/json
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 
 mongoose.connect('mongodb://localhost/gescompta', { useMongoClient: true });
 mongoose.plugin(schema => { schema.options.usePushEach = true });

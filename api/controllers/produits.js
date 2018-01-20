@@ -10,8 +10,16 @@ module.exports.controller = function(app) {
     });
 
     app.post('/produit', function(req, res, err) {
-        var produit = mongoose.model("Produit");
+        var produits = mongoose.model("Produit");
         req.body.password = hash.hashPassword(req.body.password);
+        var prod = req.body;
+        if(prod.price_HT && !prod.price_TTC){
+            prod.price_TTC = prod.price_HT * 1.2;
+        }
+        else if (prod.price_TTC && !prod.price_HT){
+            prod.price_HT = prod.price_TTC / 1.2;
+        }
+
         produit.create(req.body, (err, result) => {
             if (err) {
                 res.statusCode = 400;
