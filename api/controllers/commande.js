@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 module.exports.controller = function (app) {
 
-    app.get('/api/command/:id', function (req, res, err) {
+    app.get('/api/command/:user', function (req, res, err) {
         var command = mongoose.model("Command");
         var commands = command.find({ user: req.params.user, valid: false }, function (err, resultat) {
             if (err) res.json(res);
@@ -10,8 +10,6 @@ module.exports.controller = function (app) {
     });
 
     app.post('/api/command', function (req, res, err) {
-
-        console.log(req.body);
         var command = mongoose.model("Command");
         var commands = command.find({ user: req.body.user, valid: false }, function (err, resultat) {
             if (err) res.json(res);

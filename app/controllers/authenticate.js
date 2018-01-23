@@ -10,10 +10,6 @@ module.exports.controller = function(app) {
             var password = req.body.pass;
         }
         
-        // request.get("http://localhost/user/"+login, function(err, user){
-        //     console.log(err, user);
-        //     
-        // })
         var User = mongoose.model("User");
         var user = User.findEnabled({ login: login }, function(err, user) {
             if (user.length == 0 || !hash.comparePassword(password, user[0].password)) {
