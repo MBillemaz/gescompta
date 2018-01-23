@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 module.exports.controller = function(app) {
 
-    app.get('/produit/:id', function(req, res, err) {
+    app.get('/api/produit/:id', function(req, res, err) {
         var produit = mongoose.model("Produit");
         var produits = produit.find({ _id: req.params.id }, function(err, resultat) {
             if (err) res.json(res);
@@ -9,7 +9,7 @@ module.exports.controller = function(app) {
         });
     });
 
-    app.post('/produit', function(req, res, err) {
+    app.post('/api/produit', function(req, res, err) {
         var produits = mongoose.model("Produit");
         req.body.password = hash.hashPassword(req.body.password);
         var prod = req.body;
@@ -19,7 +19,7 @@ module.exports.controller = function(app) {
         else if (prod.price_TTC && !prod.price_HT){
             prod.price_HT = prod.price_TTC / 1.2;
         }
-
+        
         produit.create(req.body, (err, result) => {
             if (err) {
                 res.statusCode = 400;
@@ -32,7 +32,7 @@ module.exports.controller = function(app) {
         })
     });
 
-    app.patch('/produit/:id', function(req, res, err) {
+    app.patch('/api/produit/:id', function(req, res, err) {
         var id = req.params.id;
         var idGroup = req.body.group;
         var Group = mongoose.model("Group");
@@ -69,7 +69,7 @@ module.exports.controller = function(app) {
         })
     })
 
-    app.delete('/produit/:id', function(req, res, err) {
+    app.delete('/api/produit/:id', function(req, res, err) {
         var id = req.params.id;
         if (!id) {
             res.statusCode = 400;

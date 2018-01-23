@@ -1,0 +1,7 @@
+extends layout.pug
+block content
+  each produit in produits
+    div
+      .prod #{produit.identifiant} : 
+        a(href='/detail/' + produit._id) #{produit.name}
+    .price #{produit.price_TTC}€

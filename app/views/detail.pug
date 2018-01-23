@@ -1,0 +1,21 @@
+extends layout.pug
+block content
+  .content
+    .title #{produit.identifiant} : #{produit.name}
+    b #{produit.price_TTC}€
+    .desc Capacité : #{produit.descriptif.capacity} Go
+    .desc Fréquence : #{produit.descriptif.frequency} GHz
+    .desc Autonomie : #{produit.descriptif.autonomy} heures 
+
+    .infos Garantie : #{produit.infos.guarantee} ans
+    .infos Contact : #{produit.infos.mail}
+    .infos Adresse de renvoi : #{produit.infos.address}
+
+    button
+      a(href='/command/' + produit._id) Ajouter au panier
+      
+//-<{ _id: 5a636e5fd7980828580a4405,
+ identifiant: 'ABC', name: 'Ordinateur portable', price_TTC: 350, price_HT: 291.6666666666667, __v: 0,
+ createAt: 2018-01-20T16:29:19.050Z, 
+ infos: { guarantee: 2, mail: 'retour@mail.com', address: '3 avenue de paris' },
+ descriptif: { capacity: 20, frequency: 3.3, autonomy: 3.5, compatibility: true }, disabled: false }> 

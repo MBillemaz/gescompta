@@ -13,7 +13,7 @@ class User extends BaseModel {
         birth_date: {type: Date, required: true},
         login: {type: String, required: true, unique: true},
         password: {type: String, required: true},
-        addresses: [{type: mongoose.Schema.ObjectId, ref: 'Address'}],
+        addresses: {type: mongoose.Schema.ObjectId, ref: 'Address'},
         createAt: {type: Date, default: Date.now}
       });
   }

@@ -11,8 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "mongoose": "^4.13.9",
-    "nodemon": "^1.14.8"
+    "nodemon": "^1.14.8",
+    "pug": "^2.0.0-rc.4",
+    "request": "^2.83.0"
   }
 }

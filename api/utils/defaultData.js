@@ -55,6 +55,66 @@ const loadProduit = () => {
   }, (err, result) => {
     if (err) {throw err;}
   });
+
+  ProduitModel.findOneOrCreate({
+    identifiant: "BCD",
+       name: "Samsung galaxy S8",
+       price_TTC: 650,
+       price_HT: 650 / 1.2,
+       descriptif: {
+        capacity: 60,
+        frequency: 3.30,
+        autonomy: 12,
+        compatibility: true
+       },
+       infos: {
+        guarantee: 1,
+        mail: "samsung@mail.com",
+        address: "3 avenue de tagada"
+       }
+  }, (err, result) => {
+    if (err) {throw err;}
+  });
+
+  ProduitModel.findOneOrCreate({
+    identifiant: "CDE",
+       name: "Orginateur gaming",
+       price_TTC: 750,
+       price_HT: 750 / 1.2,
+       descriptif: {
+        capacity: 2000,
+        frequency: 4,
+        autonomy: 5,
+        compatibility: true
+       },
+       infos: {
+        guarantee: 2,
+        mail: "grosPC@mail.com",
+        address: "3 avenue de France"
+       }
+  }, (err, result) => {
+    if (err) {throw err;}
+  });
+
+  ProduitModel.findOneOrCreate({
+    identifiant: "DEF",
+       name: "nokia 3310",
+       price_TTC: 100,
+       price_HT: 100 / 1.2,
+       descriptif: {
+        capacity: 10,
+        frequency: 1.5,
+        autonomy: 24,
+        compatibility: false
+       },
+       infos: {
+        guarantee: 3,
+        mail: "nokia@mail.com",
+        address: "3 avenue de paris"
+       }
+  }, (err, result) => {
+    if (err) {throw err;}
+  });
 }
 
 loadAddress();

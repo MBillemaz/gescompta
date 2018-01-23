@@ -2,15 +2,15 @@ const mongoose = require("mongoose");
 var hash = require('../../app/helpers/hash.js');
 module.exports.controller = function(app) {
 
-    app.get('/user/:id', function(req, res, err) {
+    app.get('/api/user/:login', function(req, res, err) {
         var User = mongoose.model("User");
-        var users = User.find({ _id: req.params.id }, function(err, resultat) {
+        var user = User.findEnabled({ login: login }, function(err, user) {
             if (err) res.json(res);
             else res.json(resultat)
         });
     });
 
-    app.post('/user', function(req, res, err) {
+    app.post('/api/user', function(req, res, err) {
         var User = mongoose.model("User");
         req.body.password = hash.hashPassword(req.body.password);
         User.create(req.body, (err, result) => {
@@ -25,7 +25,7 @@ module.exports.controller = function(app) {
         })
     });
 
-    app.patch('/user/:id', function(req, res, err) {
+    app.patch('/api/user/:id', function(req, res, err) {
         var id = req.params.id;
         var idGroup = req.body.group;
         var Group = mongoose.model("Group");
@@ -62,7 +62,7 @@ module.exports.controller = function(app) {
         })
     })
 
-    app.delete('/user/:id', function(req, res, err) {
+    app.delete('/api/user/:id', function(req, res, err) {
         var id = req.params.id;
         if (!id) {
             res.statusCode = 400;
