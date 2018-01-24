@@ -77,7 +77,6 @@ module.exports.controller = function(app) {
         } else {
             var produit = mongoose.model("produit");
             produit.findByIdAndUpdate({ _id: id }, { disabled: true }, function(err, resu) {
-                console.log(resu);
                 if (err) {
                     res.statusCode = 400;
                     res.send(err);

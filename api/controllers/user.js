@@ -70,7 +70,6 @@ module.exports.controller = function(app) {
         } else {
             var User = mongoose.model("User");
             User.findByIdAndUpdate({ _id: id }, { disabled: true }, function(err, resu) {
-                console.log(resu);
                 if (err) {
                     res.statusCode = 400;
                     res.send(err);

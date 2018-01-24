@@ -3,71 +3,71 @@ html
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     body
         .container
-        .row
-            .col-xs-6
-            .text-center
-                i.fa.fa-search-plus.pull-left.icon
-
-                h2= "Facture : " + commande._id
-            hr
-            .row.text-center
+            .row
                 .col-xs-6
-                .panel.panel-default.height
-                    .panel-heading Billing Details
-                    .panel-body
-                    strong= commande.user.first_name + " " + commande.user.name + ":"              
-                    div= commande.user.addresses.number + " " + commande.user.addresses.street
-                    div= commande.user.addresses.zip_code
-                    div= commande.user.addresses.city
-                    div= commande.user.addresses.country
-                .col-xs-6.col-md-3.col-lg-3.pull-right
-                .panel.panel-default.height
-                    .panel-heading Shipping Address
-                    .panel-body
-                    strong= commande.user.first_name + " " + commande.user.name + ":"
-                    div= commande.user.addresses.number + " " + commande.user.addresses.street
-                    div= commande.user.addresses.zip_code
-                    div= commande.user.addresses.city
-                    div= commande.user.addresses.country
-        .row
-            .col-md-6
-            .panel.panel-default
-                .panel-heading
-                h3.text-center
-                    strong Order summary
-                .panel-body
-                .table-responsive
-                    table.table.table-condensed
-                        thead
-                            tr
-                                td
-                                    strong Item Name
-                                td.text-center
-                                    strong Item HT price
-                                td.text-right
-                                    strong Item TTC price
-                        tbody
-                            -var HT = 0;
-                            -var TTC = 0;
-                            each produit in commande.produits
-                                tr
-                                    td= produit.name
-                                    td.text-center= produit.price_HT.toFixed(2) + '€'
-                                    td.text-right= produit.price_TTC.toFixed(2) + '€'
-                                -HT += produit.price_HT;
-                                -TTC += produit.price_TTC
-                            tr
-                                td.highrow
-                                td.highrow
-                                td.highrow.text-center
-                                    strong Total HT
-                                td.highrow.text-right= HT.toFixed(2) + '€'
-                            tr
-                                td.emptyrow
-                                td.emptyrow
-                                td.emptyrow.text-center
-                                    strong Total TTC
-                                td.emptyrow.text-right= TTC.toFixed(2) + '€'
+                .text-center
+                    i.fa.fa-search-plus.pull-left.icon
+
+                    h2= "Facture : " + commande._id
+                hr
+                .row.text-center
+                    .col-xs-6.col-md-6.col-lg-6.pull-left
+                        .panel.panel-default.height
+                            .panel-heading Billing Details
+                            .panel-body
+                            strong= commande.user.first_name + " " + commande.user.name + ":"              
+                            div= commande.user.addresses.number + " " + commande.user.addresses.street
+                            div= commande.user.addresses.zip_code
+                            div= commande.user.addresses.city
+                            div= commande.user.addresses.country
+                    .col-xs-6.col-md-6.col-lg-6.pull-right
+                        .panel.panel-default.height
+                            .panel-heading Shipping Address
+                            .panel-body
+                            strong= commande.user.first_name + " " + commande.user.name + ":"
+                            div= commande.user.addresses.number + " " + commande.user.addresses.street
+                            div= commande.user.addresses.zip_code
+                            div= commande.user.addresses.city
+                            div= commande.user.addresses.country
+            .row
+                .col-md-12
+                    .panel.panel-default
+                        .panel-heading
+                            h3.text-center
+                                strong Order summary
+                        .panel-body
+                            .table-responsive
+                                table.table.table-condensed
+                                    thead
+                                        tr
+                                            td
+                                                strong Item Name
+                                            td.text-center
+                                                strong Item HT price
+                                            td.text-right
+                                                strong Item TTC price
+                                    tbody
+                                        -var HT = 0;
+                                        -var TTC = 0;
+                                        each produit in commande.produits
+                                            tr
+                                                td= produit.name
+                                                td.text-center= produit.price_HT.toFixed(2) + '€'
+                                                td.text-right= produit.price_TTC.toFixed(2) + '€'
+                                            -HT += produit.price_HT;
+                                            -TTC += produit.price_TTC
+                                        tr
+                                            td.highrow
+                                            td.highrow
+                                            td.highrow.text-center
+                                                strong Total HT
+                                            td.highrow.text-right= HT.toFixed(2) + '€'
+                                        tr
+                                            td.emptyrow
+                                            td.emptyrow
+                                            td.emptyrow.text-center
+                                                strong Total TTC
+                                            td.emptyrow.text-right= TTC.toFixed(2) + '€'
 
 
             style.
