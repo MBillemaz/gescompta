@@ -1,5 +1,18 @@
+extends layout.pug
 block content
-  each produit in produits
-    -console.log(produit.name)
-    div
-      #{produit.name}
+  -var price = 0
+  .content
+    -if (produits) 
+    
+      each produit in produits
+        -price = price + produit.price_TTC
+        .info= produit.name + " : " +  produit.price_TTC + "€"
+          .delete
+            //- button(value=produit._id)= "x"
+
+      div
+        b= "Prix total : " + price + "€"
+      
+      a(class="btn btn-primary" href='/validate') Valider la commande
+    -else
+      div Aucun produit dans votre panier

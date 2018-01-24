@@ -1,14 +1,16 @@
-div(classname="LoginForm")
-    form(method="post" action="/authenticate")
-        h1 Connexion
-        label Login :
-        br
-        input(type="login" name="login" required="")
-        br
-        br
-        label Password :
-        br
-        input(type="password" name="pass" required="")
-        br
-        button(type="submit")
-            | Valider
+extends layout.pug
+block content
+    div(class="LoginForm")
+        form(method="post" action="/authenticate")
+            h1 Connexion
+            label Login :
+            br
+            input(type="login" name="login" required="")
+            br
+            br
+            label Password :
+            br
+            input(type="password" name="pass" required="")
+            br
+            button(type="submit")
+                | Valider

@@ -11,8 +11,7 @@ block content
     .infos Contact : #{produit.infos.mail}
     .infos Adresse de renvoi : #{produit.infos.address}
 
-    button
-      a(href='/command/' + produit._id) Ajouter au panier
+    a(class="btn btn-primary" href='/command/' + produit._id) Ajouter au panier
       
 //-<{ _id: 5a636e5fd7980828580a4405,
  identifiant: 'ABC', name: 'Ordinateur portable', price_TTC: 350, price_HT: 291.6666666666667, __v: 0,

@@ -13,6 +13,7 @@
     "bcrypt-nodejs": "0.0.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "html-pdf": "^2.2.0",
     "mongoose": "^4.13.9",
     "nodemon": "^1.14.8",
     "pug": "^2.0.0-rc.4",

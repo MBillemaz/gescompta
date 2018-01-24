@@ -26,8 +26,8 @@ const loadUser = () => {
       name: 'user1',
       first_name: 'user1name',
       birth_date: new Date(1657, 01, 25),
-      login: 'user1',
-      password: '$2y$10$xJopALJrQVmSgF7PjPocvOWqNdPNTnp3/Knh8ELswEYDNxCet5QlC',
+      login: 'user',
+      password: '$2a$10$UP130xKVo9H8aRXDXsyHOOOrksyLHCgC9y/Fm4LFwUAYgIGXq3vlS',
       addresses: myAddress
     }, (err, result) => {
       if (err) { throw err; }
@@ -78,7 +78,7 @@ const loadProduit = () => {
 
   ProduitModel.findOneOrCreate({
     identifiant: "CDE",
-       name: "Orginateur gaming",
+       name: "Ordinateur gaming",
        price_TTC: 750,
        price_HT: 750 / 1.2,
        descriptif: {

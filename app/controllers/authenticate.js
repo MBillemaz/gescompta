@@ -13,7 +13,7 @@ module.exports.controller = function(app) {
         var User = mongoose.model("User");
         var user = User.findEnabled({ login: login }, function(err, user) {
             if (user.length == 0 || !hash.comparePassword(password, user[0].password)) {
-                res.status(401).send({ message: "Bad login or password.", auth: false });
+                res.redirect("/");
             } else {
                 res.cookie("authenticate", user[0], {expire: true})
                 res.redirect('/accueil')

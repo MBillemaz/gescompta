@@ -1,7 +1,16 @@
 extends layout.pug
 block content
+  -var column = 0;
   each produit in produits
-    div
-      .prod #{produit.identifiant} : 
-        a(href='/detail/' + produit._id) #{produit.name}
-    .price #{produit.price_TTC}€
+    -if (column == 3)
+      .row
+        .col-md-4
+          .prod #{produit.identifiant} : #{produit.name}
+            .price #{produit.price_TTC}€
+              a(class="btn btn-primary" href='/detail/' + produit._id) Détails
+            -column = 0;
+    -else 
+      .col-md-4 
+        .prod #{produit.identifiant} : #{produit.name}
+          .price #{produit.price_TTC}€
+          a(class="btn btn-primary" href='/detail/' + produit._id) Détails

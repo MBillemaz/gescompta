@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cookieParser());
 app.set("view engine", "pug");
-app.use(express.static(__dirname + '/public/pdfs'));
+
 
 mongoose.connect('mongodb://localhost/gescompta', { useMongoClient: true });
 mongoose.plugin(schema => { schema.options.usePushEach = true });
@@ -32,5 +32,7 @@ require(join(__dirname, "/api/index.js"));
 
 /* On charge les valeurs par défaults */
 require(join(__dirname, 'api/utils/defaultData.js'))
+
+app.use(express.static(join(__dirname, './public/css')));
 
 app.listen(3000);

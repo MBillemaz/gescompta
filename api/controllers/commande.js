@@ -40,6 +40,23 @@ module.exports.controller = function (app) {
         
     });
 
+    app.post('/api/command/deleteProduit', function(req, res, err){
+        var command = mongoose.model("Command");
+        var commands = command.find({ user: req.body.user, valid: false }, function (err, resultat) {
+            if (err) res.json(res);
+            else {
+                var produitIndex = command[0].produits.findIndex(function(element){
+                    return resultat._id = element._id;
+                });
+                command[0].produits.splice(produitIndex, 1);
+                command[0].save(function (err, updated) {
+                    if (err) res.status(400).send(err);
+                    else res.status(201).send("Produit added to command");
+                });
+            }
+    })
+})
+
     app.patch('/api/command/:id', function (req, res, err) {
         var id = req.params.id;
         var idProduit = req.body.produit;
@@ -85,5 +102,5 @@ module.exports.controller = function (app) {
             })
         }
 
-    });
+    })
 }
